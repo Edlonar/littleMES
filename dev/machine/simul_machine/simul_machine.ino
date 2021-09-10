@@ -1,3 +1,4 @@
+
 /**
   Arduino machine simulator
 */
@@ -15,7 +16,7 @@ const int led_NOK = 12;
 const int led_run = 10;
 const int led_stop = 11;
   /* Display */
-LiquidCrystal_I2C lcd3(0x27,20,4);  // set the LCD address to 0x27 for a 16 chars and 2 line display
+LiquidCrystal_I2C lcd3(0x27,16,2);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 /* Keypad setup */
 const byte KEYPAD_ROWS = 4;
 const byte KEYPAD_COLS = 4;
@@ -61,7 +62,8 @@ void setup() {
   pinMode(button_start, INPUT_PULLUP);
   pinMode(button_stop, INPUT_PULLUP);
   randomSeed(analogRead(0));
-  lcd3.begin(16,2);
+  lcd3.init();
+  lcd3.backlight();
   showIntro();
   lcd3.setCursor(5,1);
   lcd3.cursor();
